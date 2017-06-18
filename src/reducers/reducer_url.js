@@ -1,4 +1,4 @@
-import { GET_SHORT_URL, LOADING, ERROR } from '../actions/index';
+import { GET_SHORT_URL, GET_LONG_URL, LOADING, ERROR } from '../actions/index';
 
 const INITIAL_STATE = {
     loading: false,
@@ -19,6 +19,16 @@ export default function(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 shorturl: action.payload,
+                longurl: null,
+                loading: false,
+                error: null
+            }
+        case GET_LONG_URL:
+
+            return {
+                ...state,
+                shorturl: null,
+                longurl: action.payload,
                 loading: false,
                 error: null
             }

@@ -12,11 +12,11 @@ class App extends Component {
                 <div className="col-xs-12 col-md-6">
                     <div className="panel panel-info">
                         <div className="panel-heading">
-                            <h4>URL Shortener <small>using bitly.com</small></h4>
+                            <h4>URL Shortener / Expander <small>using bitly.com</small></h4>
                         </div>
                         <div className="panel-body">
                             <UrlSearch error={this.props.error} />
-                            <UrlDisplay result={this.props.shorturl} loading={this.props.loading} />
+                            <UrlDisplay result={this.props.shorturl || this.props.longurl} loading={this.props.loading} />
                         </div>
                     </div>
                 </div>
@@ -30,6 +30,7 @@ function mapStateToProps(state) {
     return {
         ...state,
         shorturl: state.convertedUrl.shorturl,
+        longurl: state.convertedUrl.longurl,
         loading: state.convertedUrl.loading,
         error: state.convertedUrl.error
     }

@@ -39,7 +39,7 @@ class UrlSearch extends Component {
         if(msg !== null) {
             return <p className="bg-warning">{msg}</p>;
         } else {
-            return <p>Please enter a url to shorten.</p>;
+            return <p>Please enter a url to shorten, or a bitly link to expand.</p>;
         }
     }
 
