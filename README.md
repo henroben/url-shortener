@@ -2,7 +2,9 @@
 
 Demo available at [https://henroben.github.io/url-shortener/](https://henroben.github.io/url-shortener/)
 
-### How to Start ###
+### Development Mode ###
+
+Development server located on http://localhost:3000
 
 ```
 	> npm install
@@ -16,6 +18,8 @@ Demo available at [https://henroben.github.io/url-shortener/](https://henroben.g
 ```
 
 ### Build for deployment ###
+
+Deployment files located in /dist/
 
 ```
 	> npm run build

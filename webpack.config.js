@@ -10,12 +10,14 @@ const extractSass = new ExtractTextPlugin({
 });
 
 const VENDOR_LIBS = [
+  'axios',
   'lodash',
   'react',
   'react-dom',
   'react-redux',
   'react-router',
-  'redux'
+  'redux',
+  'valid-url'
 ];
 
 module.exports = {
@@ -57,7 +59,9 @@ module.exports = {
       allChunks: true,
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
     })
   ]
 };

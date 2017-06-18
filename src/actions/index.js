@@ -22,7 +22,6 @@ export function fetchShortUrl(url) {
         const request = `${ROOT_URL_SHORTEN}&longUrl=${url}`;
 
         axios.get(request).then((response) => {
-            console.log('reqest made ', response);
             if(response.data.status_txt === "ALREADY_A_BITLY_LINK") {
                 dispatch(fetchLongUrl(url));
                 return dispatch({
