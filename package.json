@@ -8,6 +8,7 @@
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "clean": "rimraf dist",
     "build": "set NODE_ENV='production' && npm run clean && webpack -p",
+    "deploy": "npm run build && git subtree push --prefix dist origin gh-pages",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },

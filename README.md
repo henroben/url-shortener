@@ -1,5 +1,7 @@
 # React URL Shortener
 
+Demo available at [https://henroben.github.io/url-shortener/](https://henroben.github.io/url-shortener/)
+
 ### How to Start ###
 
 ```
