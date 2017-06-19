@@ -2,6 +2,11 @@
 
 html {
   height: 100%;
+  background: url("./../img/899145.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 body {
@@ -25,7 +30,8 @@ body {
 }
 
 .panel {
-
+  opacity: 0.9;
+  transition: opacity .6s ease-in;
   .input-group {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -36,14 +42,53 @@ body {
   }
   input:focus {
     opacity: 1;
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: $tertiary-color;
+
   }
+
   .results input {
     opacity: 1;
   }
   button {
     width:80px;
     text-transform: uppercase;
+    background-color: $tertiary-color;
+    border-color: $tertiary-color;
+    transition: background-color .8s;
   }
+  button:hover {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+  }
+  button:disabled, button:disabled:hover, button:disabled:active {
+    background-color: $disabled;
+    border-color: $disabled;
+  }
+  button:active, button:active:hover {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+  }
+  button:focus, button:focus:hover {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+.panel:hover {
+  opacity: 1;
+}
+
+.panel-info {
+  .panel-heading {
+    background-color: $primary-color;
+    color: $secondary-color;
+    border-color: $secondary-color;
+  }
+  border-color: $secondary-color;
+
 }
 
 .loader,
@@ -58,7 +103,7 @@ body {
   animation: load7 1.8s infinite ease-in-out;
 }
 .loader {
-  color: #0080ff;
+  color: $secondary-color;
   font-size: 8px;
   margin: -5px auto;
   margin-bottom: 35px;

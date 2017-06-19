@@ -20,7 +20,7 @@ export function fetchShortUrl(url) {
             // console.log('response', response);
             if(response.data.status_txt === "ALREADY_A_BITLY_LINK") {
                 return dispatch(fetchLongUrl(url));
-            } else if (response.data.status_code === 500) {
+            } else if (response.data.status_code === 500 && response.data.status_txt !== "ALREADY_A_BITLY_LINK") {
                 return dispatch({
                     type: types.ERROR,
                     payload: 'ERROR: ' + response.data.status_txt

@@ -5,6 +5,7 @@ import UrlSearch from './url_search';
 import UrlDisplay from './url_display';
 
 class App extends Component {
+
     render() {
         return (
             <div className="container vertical-center">

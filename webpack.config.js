@@ -38,6 +38,27 @@ module.exports = {
       { // sass / scss loader for webpack
         test: /\.(sass|scss)$/,
         loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/, // set file types to handle
+        use: [
+          {
+            loader: 'url-loader',
+            options: { limit: 40000, publicPath: '../', name: './img/[hash].[ext]' }
+          }, // depending on image size, will either incorporate img directly into bundle.js (< 40 kb) or supply link, use object rather than string so can set config
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              progressive: true,
+              optimizationLevel: 7,
+              interlaced: false,
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              }
+            }
+          } // first to be applied
+        ]
       }
     ]
   },
