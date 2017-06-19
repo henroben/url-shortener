@@ -7,7 +7,7 @@ import UrlDisplay from './url_display';
 class App extends Component {
     render() {
         return (
-            <div className="container">
+            <div className="container vertical-center">
                 <div className="col-xs-hidden col-md-3"></div>
                 <div className="col-xs-12 col-md-6">
                     <div className="panel panel-info">
@@ -16,7 +16,7 @@ class App extends Component {
                         </div>
                         <div className="panel-body">
                             <UrlSearch error={this.props.error} />
-                            <UrlDisplay result={this.props.shorturl || this.props.longurl} loading={this.props.loading} />
+                            <UrlDisplay result={this.props.url} loading={this.props.loading} />
                         </div>
                     </div>
                 </div>
@@ -29,8 +29,7 @@ class App extends Component {
 function mapStateToProps(state) {
     return {
         ...state,
-        shorturl: state.convertedUrl.shorturl,
-        longurl: state.convertedUrl.longurl,
+        url: state.convertedUrl.url,
         loading: state.convertedUrl.loading,
         error: state.convertedUrl.error
     }

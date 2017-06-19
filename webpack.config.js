@@ -11,12 +11,11 @@ const extractSass = new ExtractTextPlugin({
 
 const VENDOR_LIBS = [
   'axios',
-  'lodash',
   'react',
   'react-dom',
   'react-redux',
-  'react-router',
   'redux',
+  'redux-thunk',
   'valid-url'
 ];
 

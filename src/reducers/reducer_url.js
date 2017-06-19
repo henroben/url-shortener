@@ -1,38 +1,27 @@
-import { GET_SHORT_URL, GET_LONG_URL, LOADING, ERROR } from '../actions/index';
+import * as types from './../actions/types';
+
 
 const INITIAL_STATE = {
     loading: false,
-    shorturl: null,
-    longurl: null,
+    url: null,
     error: null
 };
 
 export default function(state = INITIAL_STATE, action) {
     switch(action.type) {
-        case LOADING:
+        case types.LOADING:
             return {
                 ...state,
                 loading: action.payload
             }
-        case GET_SHORT_URL:
-            console.log('short_url', action.payload);
+        case types.GET_URL:
             return {
                 ...state,
-                shorturl: action.payload,
-                longurl: null,
+                url: action.payload,
                 loading: false,
                 error: null
             }
-        case GET_LONG_URL:
-
-            return {
-                ...state,
-                shorturl: null,
-                longurl: action.payload,
-                loading: false,
-                error: null
-            }
-        case ERROR:
+        case types.ERROR:
             return {
                 ...state,
                 error: action.payload,

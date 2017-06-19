@@ -12,6 +12,7 @@ class UrlSearch extends Component {
             inputStatus: true
         }
         this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.checkInputUrl = this.checkInputUrl.bind(this);
     }
 
     onFormSubmit(e) {
@@ -53,7 +54,7 @@ class UrlSearch extends Component {
                     <input className="form-control"
                            placeholder="http://www.example.com"
                            ref="inputurl"
-                           onChange={this.checkInputUrl.bind(this)}
+                           onChange={this.checkInputUrl}
                            onFocus={()=>{this.refs.inputurl.select()}}
                     />
                     <span className="input-group-btn">

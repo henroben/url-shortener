@@ -1,10 +1,6 @@
 import axios from 'axios';
 import { ACCESS_TOKEN } from './../../config/config';
-
-export const LOADING = 'LOADING';
-export const ERROR = 'ERROR';
-export const GET_SHORT_URL = 'GET_SHORT_URL';
-export const GET_LONG_URL = 'GET_LONG_URL';
+import * as types from './types';
 
 const ROOT_URL_SHORTEN = `https://api-ssl.bitly.com/v3/shorten?access_token=${ACCESS_TOKEN}`;
 const ROOT_URL_LOOKUP = `https://api-ssl.bitly.com/v3/expand?access_token=${ACCESS_TOKEN}`;
@@ -13,55 +9,61 @@ const ROOT_URL_LOOKUP = `https://api-ssl.bitly.com/v3/expand?access_token=${ACCE
 export function fetchShortUrl(url) {
     // Query bitly.com for shortened url
     return function (dispatch) {
+
         if(url !== undefined || url !== null) {
-            dispatch({
-                type: LOADING,
-                payload: true
-            });
+            dispatch(setLoading());
         }
+
         const request = `${ROOT_URL_SHORTEN}&longUrl=${url}`;
 
-        axios.get(request).then((response) => {
+        return axios.get(request).then((response) => {
+            // console.log('response', response);
             if(response.data.status_txt === "ALREADY_A_BITLY_LINK") {
-                dispatch(fetchLongUrl(url));
+                return dispatch(fetchLongUrl(url));
+            } else if (response.data.status_code === 500) {
                 return dispatch({
-                    type: ERROR,
-                    payload: 'Already a bitly link'
+                    type: types.ERROR,
+                    payload: 'ERROR: ' + response.data.status_txt
                 });
             } else {
                 return dispatch({
-                    type: GET_SHORT_URL,
+                    type: types.GET_URL,
                     payload: response.data.data.url
                 });
             }
         }).catch(function (error) {
-            console.log('error', error);
             return dispatch({
-                type: ERROR,
-                payload: response.data.data.url
+                type: types.ERROR,
+                payload: 'Network Error, please check your connection.'
             });
         });
     };
 
 }
 
+export function setLoading() {
+    "use strict";
+    return({
+        type: types.LOADING,
+        payload: true
+    });
+}
+
 export function fetchLongUrl(url) {
-    console.log('fetch long url');
 
     return function (dispatch) {
         // Query bitly.com for long version of shortened url
         const request = `${ROOT_URL_LOOKUP}&shortUrl=${url}`;
-        axios.get(request).then((response) => {
-            console.log(response);
+        return axios.get(request).then((response) => {
+
             return dispatch({
-                type: GET_LONG_URL,
+                type: types.GET_URL,
                 payload: response.data.data.expand[0].long_url
             });
         })
             .catch(function (error) {
                 console.log(error);
             });
-    }
-
+    };
 
 }

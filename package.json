@@ -27,6 +27,7 @@
     "jquery": "^2.2.1",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
+    "nock": "^9.0.13",
     "node-sass": "^4.5.3",
     "react-addons-test-utils": "^0.14.7",
     "redux-mock-store": "^1.2.3",
