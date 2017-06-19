@@ -11,6 +11,12 @@ Development server located on http://localhost:3000
 	> npm start
 ```
 
+Project will need a config.js file containing your bitly.com ACCESS_TOKEN to be created in /config/config.js
+
+```
+	export const ACCESS_TOKEN = 'your token here';
+```
+
 ### Testing ###
 
 ```

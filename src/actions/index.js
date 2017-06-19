@@ -17,10 +17,13 @@ export function fetchShortUrl(url) {
         const request = `${ROOT_URL_SHORTEN}&longUrl=${url}`;
 
         return axios.get(request).then((response) => {
-            // console.log('response', response);
             if(response.data.status_txt === "ALREADY_A_BITLY_LINK") {
+                // bitly link submitted & api has verified, so pass along to fetchLongUrl to
+                // retrieve expanded link
                 return dispatch(fetchLongUrl(url));
             } else if (response.data.status_code === 500 && response.data.status_txt !== "ALREADY_A_BITLY_LINK") {
+                // Some other error, pass on the error message
+                // ToDo: add in specific cases & human readable messages
                 return dispatch({
                     type: types.ERROR,
                     payload: 'ERROR: ' + response.data.status_txt
@@ -42,7 +45,6 @@ export function fetchShortUrl(url) {
 }
 
 export function setLoading() {
-    "use strict";
     return({
         type: types.LOADING,
         payload: true
@@ -55,15 +57,19 @@ export function fetchLongUrl(url) {
         // Query bitly.com for long version of shortened url
         const request = `${ROOT_URL_LOOKUP}&shortUrl=${url}`;
         return axios.get(request).then((response) => {
-
             return dispatch({
                 type: types.GET_URL,
                 payload: response.data.data.expand[0].long_url
             });
         })
-            .catch(function (error) {
-                console.log(error);
+        .catch(function (error) {
+            // fetchLongUrl is only called by fetchShortUrl, so link exists etc.
+            // so only need to catch potential network error for this endpoint
+            return dispatch({
+                type: types.ERROR,
+                payload: 'Network Error, please check your connection.'
             });
+        });
     };
 
 }

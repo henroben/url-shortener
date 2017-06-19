@@ -8,6 +8,7 @@ class UrlSearch extends Component {
 
     constructor(props) {
         super(props);
+        // set inputstatus to true i.e. disabled
         this.state = {
             inputStatus: true
         }
@@ -29,9 +30,12 @@ class UrlSearch extends Component {
 
     checkInputUrl() {
         let url = this.refs.inputurl.value;
+        // check if valid url entered
         if (isWebUri(url)) {
+            // url valid, set disabled to false
             this.setState({inputStatus: false});
         } else {
+            // url not valid, set disabled to true
             this.setState({inputStatus: true});
         }
     }

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "URL Shortener in React",
   "main": "index.js",
-  "repository": "",
+  "repository": "https://github.com/henroben/url-shortener.git",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "clean": "rimraf dist",
