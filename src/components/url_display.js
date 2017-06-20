@@ -38,8 +38,8 @@ export default class UrlDisplay extends Component {
                            onFocus={()=>{this.refs.urlresult.select()}}
                     />
                     <span className="input-group-btn">
-                        <button className="btn btn-primary" onClick={this.copyToClipboard.bind(this, result)}>
-                            <i className="fa fa-clipboard"></i> Copy
+                        <button className="btn btn-primary copy" onClick={this.copyToClipboard.bind(this, result)}>
+                            <span>Copy </span>
                         </button>
                     </span>
                 </div>

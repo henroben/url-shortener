@@ -62,8 +62,8 @@ class UrlSearch extends Component {
                            onFocus={()=>{this.refs.inputurl.select()}}
                     />
                     <span className="input-group-btn">
-                        <button className="btn btn-primary" disabled={this.state.inputStatus}>
-                            <i className="fa fa-sign-in"></i> Go
+                        <button className="btn btn-primary go" disabled={this.state.inputStatus}>
+                            <span>Go </span>
                         </button>
                     </span>
                 </div>

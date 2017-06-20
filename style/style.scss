@@ -76,6 +76,57 @@ body {
     background-color: $disabled;
     border-color: $disabled;
   }
+
+  .go span {
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .go span:after {
+    font-family: FontAwesome;
+    content: '\f090';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -15px;
+    transition: 0.5s;
+  }
+
+  .go:hover span {
+    padding-right: 15px;
+  }
+
+  .go:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  .copy span {
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .copy span:after {
+    font-family: FontAwesome;
+    content: '\f0ea';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -15px;
+    transition: 0.5s;
+  }
+
+  .copy:hover span {
+    padding-right: 18px;
+  }
+
+  .copy:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
 }
 .panel:hover {
   opacity: 1;
