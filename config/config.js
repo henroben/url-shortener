@@ -1,0 +1,3 @@
+export const ACCESS_TOKEN = '84676983f2758a91686a9410ef7a7a1f7c20d83a';
+export const CLIENT_ID = '1087d61b2b5ade944b19c8044f4f399fda93a160';
+export const CLIENT_SECRET = 'dab8d1b66f242eef9929670ff9f66f1abe4d16a9';
